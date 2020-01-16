@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>summer的个人网站</title>
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/loge-icon.png">
+    <style>
+        .loge img {
+            cursor: pointer;
+            -webkit-animation: scaleout 3s infinite ease-in-out;
+            animation: scaleout 3s infinite ease-in-out;
+        }
+
+        @-webkit-keyframes scaleout {
+            0% {
+                -webkit-transform: scale(1.0)
+            }
+
+            100% {
+                -webkit-transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes scaleout {
+            0% {
+                transform: scale(1.0);
+                -webkit-transform: scale(1.0);
+            }
+
+            100% {
+                transform: scale(1.1);
+                -webkit-transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body topmargin="0" oncontextmenu="return false" ondragstart="return false" onselectstart="return false"
+    onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false"
+    onmouseup="document.selection.empty()">
+    <div class="box">
+        <div class="header">
+            <img src="images/header.png">
+        </div>
+        <div class="loge" style="width:191px;height:69px; background: url(images/loge.png)">
+            <img src="images/loge.png">
+        </div>
+        <div class="Service">
+            <img src="images/Service.png">
+        </div>
+        <div class="WORK">
+            <img src="images/WORK.png">
+        </div>
+        <div class="WORK1">
+            <img src="images/WORK1.png">
+        </div>
+        <div class="WORK2">
+            <img src="images/WORK2.png">
+        </div>
+        <div class="contact">
+            <img src="images/contact.png">
+        </div>
+        <div class="top" id="btn">
+            <img src="images/top.png">
+        </div>
+        <div class="menu-box">
+            <div class="menu">
+                <div class="menu-bj"></div>
+                <div class="menu-button"></div>
+                <ul>
+                    <li><span style="text-shadow: 0px 0px 10px #ff0000;"><a href="index.html">首页</a></span>HOME</li>
+                    <li><span><a href="work.html">作品</a></span>WORK</li>
+                    <li><span><a href="service.html">服务</a></span>SERVICE</li>
+                    <li><span><a href="article.html">文章</a></span>ARTICLE</li>
+                    <li><span><a href="about.html">关于</a></span>ABOUT</li>
+                    <li><span><a href="contact.html">联系</a></span>CONTACT</li>
+                    <li><span><a onclick="jinali(true)">我的简历</a></span>GRJL</li>
+                </ul>
+            </div>
+            <div class="jianli" id="jianli">
+                <iframe align="center" width="100%" height="750px" src="个人简历/index.html" frameborder="no" border="0"
+                    marginwidth="0" marginheight="0" scrolling="no"></iframe>
+                <div id="jianli_x" onclick="jinali(false)" style="border-radius:50px;">
+                	<img src="images/gb.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let jianli = document.getElementById('jianli');
+        jianli.style.display = "none";
+        function jinali(a) {
+            if (a) {
+                jianli.style.display = "block";
+            } else {
+                jianli.style.display = "none";
+            }
+        };
+
+        window.onload = function () {
+            var obtn = document.getElementById('btn');
+            var timer = null;
+            var isTop = true;
+            //获取页面的可视窗口高度
+            var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+
+            //滚动条滚动时触发
+            window.onscroll = function () {
+                //在滚动的时候增加判断
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;//特别注意这句，忘了的话很容易出错
+                if (osTop >= clientHeight) {
+                    obtn.style.display = 'block';
+                } else {
+                    obtn.style.display = 'none';
+                }
+
+                if (!isTop) {
+                    clearInterval(timer);
+                }
+                isTop = false;
+            };
+
+
+            btn.onclick = function () {
+
+                //设置定时器
+                timer = setInterval(function () {
+                    //获取滚动条距离顶部的高度
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+                    //减小的速度
+                    var isSpeed = Math.floor(-osTop / 6);
+                    document.documentElement.scrollTop = document.body.scrollTop = osTop + isSpeed;
+                    //console.log( osTop + isSpeed);
+
+                    isTop = true;
+
+                    //判断，然后清除定时器
+                    if (osTop == 0) {
+                        clearInterval(timer);
+                    }
+                }, 30);
+
+
+
+            };
+        }
+    </script>
+    <!--回到顶部-->
+</body>
+
+</html>

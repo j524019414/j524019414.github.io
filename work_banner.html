@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>作品-banner</title>
+<link href="css/work-2.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/loge-icon.png">
+</head>
+
+<body topmargin="0" oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()">
+	<div>
+		<img src="images/work-bj1.png">
+	</div>
+	<div class="bj">
+		<img src="images/work-bg2.png">
+	</div>
+		<div class="loge">
+		<img src="images/loge.png">
+	</div>
+	<div class="menu-box">
+	<div class="menu">
+		<div class="menu-bj"></div>
+		<div class="menu-button"></div>
+			<ul>
+				<li><span style="text-shadow: 0px 0px 10px #ff0000;"><a href="index.html">首页</a></span>HOME</li>
+				<li><span><a href="work.html">作品</a></span>WORK</li>
+				<li><span><a href="service.html">服务</a></span>SERVICE</li>
+				<li><span><a href="article.html">文章</a></span>ARTICLE</li>
+				<li><span><a href="about.html">关于</a></span>ABOUT</li>
+				<li><span><a href="contact.html">联系</a></span>CONTACT</li>
+			</ul>
+		</div>
+	</div>
+	<div class="button">
+		 <ul>
+			 <li><a href="work.html"><span>UI界面</span></a></li>
+			 <li><a href="work_h5.html"><span>视频特效</span></a></li>
+			 <li><a href="work_h5_jiem.html"><span>H5界面</span></a></li>
+			 <li><a href="work_wangy.html"><span>网页设计</span></a></li>
+			 <li style="background: #e34b4b;"><span style="color:white;">banner轮播</span></li>
+		 </ul>
+	</div>
+	<div class="all-work">
+		 <ul>
+			 <li><img src="work_images/66.jpg"></li>
+			 <li><img src="work_images/67.jpg"></li>
+			 <li><img src="work_images/68.jpg"></li>
+			 <li><img src="work_images/69.jpg"></li>
+			 <li><img src="work_images/70.jpg"></li>
+			 <li><img src="work_images/72.jpg"></li>
+			 <li><img src="work_images/73.png"></li>
+			 <li><img src="work_images/74.jpg"></li>
+			 <li><img src="work_images/75.jpg"></li>
+			 <li><img src="work_images/76.jpg"></li>
+			 <li><img src="work_images/77.jpg"></li>
+			 <li><img src="work_images/78.png"></li>
+			 <li><img src="work_images/79.jpg"></li>
+			 <li><img src="work_images/80.jpg"></li>
+			 <li><img src="work_images/81.jpg"></li>
+			 <li><img src="work_images/82.jpg"></li>
+			 <li><img src="work_images/83.jpg"></li>
+			 <li><img src="work_images/84.jpg"></li>
+			 <li><img src="work_images/85.jpg"></li>
+			 <li><img src="work_images/86.png"></li>
+			 <li><img src="work_images/87.jpg"></li>
+			 <li><img src="work_images/88.jpg"></li>
+			 <li><img src="work_images/89.jpg"></li>
+			 <li><img src="work_images/90.png"></li>
+			 <li><img src="work_images/91.jpg"></li>
+			 <li><img src="work_images/92.png"></li>
+			 <li><img src="work_images/93.jpg"></li>
+			 <li><img src="work_images/94.jpg"></li>
+		 </ul>
+	</div>
+	<div class="top" id="btn">
+	<img src="images/top.png">
+	</div>
+	<script type="text/javascript">
+            window.onload = function() {
+                var obtn = document.getElementById('btn');
+                var timer = null;
+                var isTop = true;
+                //获取页面的可视窗口高度
+                var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+ 
+                //滚动条滚动时触发
+                window.onscroll = function(){
+                    //在滚动的时候增加判断
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;//特别注意这句，忘了的话很容易出错
+                    if (osTop >= clientHeight) {
+                        obtn.style.display = 'block';
+                    }else{
+                        obtn.style.display = 'none';
+                    }
+ 
+                    if (!isTop) {
+                        clearInterval(timer);
+                    }
+                    isTop = false;
+                };
+ 
+ 
+                btn.onclick = function(){
+ 
+                    //设置定时器
+                    timer = setInterval(function(){
+                        //获取滚动条距离顶部的高度
+                        var osTop = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+                         
+                        //减小的速度
+                        var isSpeed = Math.floor(-osTop / 6);
+                        document.documentElement.scrollTop = document.body.scrollTop = osTop + isSpeed;
+                        //console.log( osTop + isSpeed);
+ 
+                        isTop = true;
+ 
+                        //判断，然后清除定时器
+                        if (osTop == 0) {
+                            clearInterval(timer);
+                        }
+                    },30);
+                     
+                     
+                     
+                };
+            }
+</script><!--回到顶部-->
+</body>
+</html>

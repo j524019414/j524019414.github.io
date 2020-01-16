@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>作品-UI界面</title>
+<link href="css/work-1.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/loge-icon.png">
+</head>
+
+<body topmargin="0" oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()">
+	<div>
+		<img src="images/work-bj1.png">
+	</div>
+	<div class="bj">
+		<img src="images/work-bg2.png">
+	</div>
+		<div class="loge">
+		<img src="images/loge.png">
+	</div>
+	<div class="menu-box">
+	<div class="menu">
+		<div class="menu-bj"></div>
+		<div class="menu-button"></div>
+			<ul>
+				<li><span style="text-shadow: 0px 0px 10px #ff0000;"><a href="index.html">首页</a></span>HOME</li>
+				<li><span><a href="work.html">作品</a></span>WORK</li>
+				<li><span><a href="service.html">服务</a></span>SERVICE</li>
+				<li><span><a href="article.html">文章</a></span>ARTICLE</li>
+				<li><span><a href="about.html">关于</a></span>ABOUT</li>
+				<li><span><a href="contact.html">联系</a></span>CONTACT</li>
+			</ul>
+		</div>
+	</div>
+	<div class="button">
+		 <ul>
+			 <li style="background: #e34b4b;"><span style="color:white;">UI界面</span></li>
+			 <li><a href="work_h5.html"><span>视频特效</span></a></li>
+			 <li><a href="work_h5_jiem.html"><span>H5界面</span></a></li>
+			 <li><a href="work_wangy.html"><span>网页设计</span></a></li>
+			 <li><a href="work_banner.html"><span>banner轮播</span></a></li>
+		 </ul>
+	</div>
+	<div class="all-work">
+		 <ul>
+			 <li><img src="work_images/1.jpg"></li>
+			 <li><img src="work_images/2.jpg"></li>
+			 <li><img src="work_images/3.jpg"></li>
+			 <li><img src="work_images/4.jpg"></li>
+			 <li><img src="work_images/5.jpg"></li>
+			 <li><img src="work_images/6.jpg"></li>
+		 </ul>
+	</div>
+	 <div class="top" id="btn">
+	<img src="images/top.png">
+	</div>
+	
+	<script type="text/javascript">
+            window.onload = function() {
+                var obtn = document.getElementById('btn');
+                var timer = null;
+                var isTop = true;
+                //获取页面的可视窗口高度
+                var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+ 
+                //滚动条滚动时触发
+                window.onscroll = function(){
+                    //在滚动的时候增加判断
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;//特别注意这句，忘了的话很容易出错
+                    if (osTop >= clientHeight) {
+                        obtn.style.display = 'block';
+                    }else{
+                        obtn.style.display = 'none';
+                    }
+ 
+                    if (!isTop) {
+                        clearInterval(timer);
+                    }
+                    isTop = false;
+                };
+ 
+ 
+                btn.onclick = function(){
+ 
+                    //设置定时器
+                    timer = setInterval(function(){
+                        //获取滚动条距离顶部的高度
+                        var osTop = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+                         
+                        //减小的速度
+                        var isSpeed = Math.floor(-osTop / 6);
+                        document.documentElement.scrollTop = document.body.scrollTop = osTop + isSpeed;
+                        //console.log( osTop + isSpeed);
+ 
+                        isTop = true;
+ 
+                        //判断，然后清除定时器
+                        if (osTop == 0) {
+                            clearInterval(timer);
+                        }
+                    },30);
+                     
+                     
+                     
+                };
+            }
+</script><!--回到顶部-->
+</body>
+</html>
